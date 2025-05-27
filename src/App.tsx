@@ -19,67 +19,59 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-300 min-h-screen min-w-xl px-8 py-5">
-      <div className="mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Create a Post</h2>
-        <form id="postForm" className="space-y-4">
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="description"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Description
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            onClick={submitPost}
-            className="bg-gray-600 text-black px-4 py-2 rounded"
+    <div className="min-h-screen">
+      <form className="bg-gray-100 flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="text-center text-3xl text-bold">Add a Post</div>
+        <div>
+          <label
+            htmlFor="title"
+            className="block text-sm/6 font-medium text-gray-900"
           >
-            Add Post
-          </button>
-        </form>
-      </div>
-
-      <div className="max-w-3xl mx-auto mt-8">
-        <h2 className="text-xl font-semibold mb-4">Posts</h2>
-        <div id="postList" className="space-y-4">
-          {posts.map((post) => (
-            <div
-              key={post.title}
-              className="mx-auto bg-white p-6 rounded-lg shadow-md text-justify"
-            >
-              <div className="font-semibold text-lg">{post.title}</div>
-              <div className="text-sm text-gray-400">{post.description}</div>
-            </div>
-          ))}
+            Title:
+          </label>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.currentTarget.value)}
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+          />
         </div>
-      </div>
+        <div>
+          <label
+            htmlFor="description"
+            className="block text-sm/6 font-medium text-gray-900"
+          >
+            Description:
+          </label>
+          <textarea
+            name="description"
+            onChange={(e) => setDescription(e.currentTarget.value)}
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            value={description}
+          />
+        </div>
+        <div className="mt-3 flex justify-center">
+          <button
+            onClick={submitPost}
+            className="flex w-64 justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm/6 font-semibold text-black shadow-xs hover:bg-gray-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+      {posts.map((post) => (
+        <dl className="mt-3 bg-indigo-100 flex min-h-full min-w-100 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+          <div className="flex flex-col pb-3 text-justify">
+            <div key={post.title}>
+              <dt className="mb-1 text-black text-2xl font-bold">
+                {post.title}
+              </dt>
+              <dd className="text-sm italic text-gray-500">{post.description}</dd>
+            </div>
+          </div>
+        </dl>
+      ))}
     </div>
   );
 }
