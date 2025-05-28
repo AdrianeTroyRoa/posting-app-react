@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen min-w-100">
       <form className="bg-gray-100 flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="text-center text-3xl text-bold">Add a Post</div>
         <div>
@@ -60,8 +60,10 @@ function App() {
           </button>
         </div>
       </form>
+
+      {/*Posts*/}
       {posts.map((post) => (
-        <dl className="mt-3 bg-indigo-100 flex min-h-full min-w-100 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <dl className="mt-3 bg-indigo-100 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="flex flex-col pb-3 text-justify">
             <div key={post.title}>
               <dt className="mb-1 text-black text-2xl font-bold">
